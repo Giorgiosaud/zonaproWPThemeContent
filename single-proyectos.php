@@ -94,7 +94,7 @@ get_header(); ?>
 					<?php endif;?>
 				</article>
 				<!-- /article -->
-
+<?php endif;?>
 			<?php endwhile; ?>
 
 		<?php else: ?>
