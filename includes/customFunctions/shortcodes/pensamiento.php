@@ -18,17 +18,20 @@ function mostrar_pensamientos( $atts ) {
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
 			$query->the_post();
-			$respuesta.='<div class="contenedorPensamiento col-xs-12">';
-			$respuesta.='<div class="Proyectos">';
-			$respuesta.='<div class="contenidoPensamiento col-xs-12 text-center">'.get_the_content().'</div>';
-			$respuesta.='</div></div>';
+			ob_start();?>
+			<div class="contenedorPensamiento col-xs-12">
+				<div class="Proyectos">
+					<div class="contenidoPensamiento col-xs-12 text-center"><?php the_content();?></div>
+				</div>
+			</div>
+	<?php
 		}
 	} else {
 		$respuesta="No Hay que Pensamientos";
 	}
 	wp_reset_postdata();
-	$respuesta.='</div>';
-	return do_shortcode($respuesta);
+	$respuesta.=ob_get_clean();
+	return $respuesta;
 }
 add_shortcode('pensamiento','mostrar_pensamientos' );
 ?>
