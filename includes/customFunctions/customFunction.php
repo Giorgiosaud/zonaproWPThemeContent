@@ -1,4 +1,4 @@
-<?
+<?php
 function my_mce_buttons_3($buttons) {	
 	/**
 	 * Add in a core button that's disabled by default

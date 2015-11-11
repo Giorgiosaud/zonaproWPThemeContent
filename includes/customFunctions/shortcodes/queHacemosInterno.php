@@ -3,7 +3,7 @@ function mostrar_que_hacemos_interno( $atts ) {
 	extract( shortcode_atts(
 	        array(
 	              'cantidad' => 4,
-	              'Titulo'=>'TE OFRECEMOS',
+	              'Titulo'=>'{:es}TE OFRECEMOS{:}{:en}WE OFFER YOU{:}',
 	              ), $atts )
 	);
 	$args = array(
@@ -14,7 +14,7 @@ function mostrar_que_hacemos_interno( $atts ) {
 	              'ignore_sticky_posts' => false,
 	              'posts_per_page'         => $cantidad,
 	              );
-	$respuesta='<div class="queHacemosInterno"><div class="tituloDeSeccionInterno col-xs-12 text-center">'.$Titulo.'</div>';
+	$respuesta='<div class="queHacemosInterno"><div class="tituloDeSeccionInterno col-xs-12 text-center">'.apply_filters('the_content',$Titulo).'</div>';
 	$query = new WP_Query( $args );
 	if ( $query->have_posts() ) {
 		while ( $query->have_posts() ) {
@@ -26,7 +26,7 @@ function mostrar_que_hacemos_interno( $atts ) {
 				$respuesta.='<div class="imagenQueHacer text-center">'.wp_get_attachment_image( $image, $size ).'</div></div>';
 			}
 			$respuesta.='<div class="tituloQueHacerInterno col-xs-12 text-center">'.get_the_title().'</div>';
-			$respuesta.='<div class="textoQueHacerInterno text-center">'.get_the_content().'</div>';
+			$respuesta.='<div class="textoQueHacerInterno text-center">'.apply_filters('the_content',get_the_content()).'</div>';
 			$respuesta.='</div>';
 		}
 	} else {

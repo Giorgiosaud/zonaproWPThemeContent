@@ -97,6 +97,11 @@ function alCargar(){
 			$('.current_page_item').removeClass('current_page_item');
 			$this.parent().addClass('current_page_item');
 			console.log("elemento de menu");
+			console.log(href);
+			if(href==='http://zonapro.net/site/en/'||href==='http://zonapro.net/site/'){
+                		document.location=href;
+               			return false;
+        		}
 			cambiarColores(2000,-0.5, 80);
 			// cambiar color al elemento del menu
 			// 
@@ -120,7 +125,7 @@ function alCargar(){
 		});
 }
 function cargarInformacion(href){
-	mostrarLoading();
+	mostrarLoading();	
 	contenedorPrincipal=$('#contenidoPrincipal');
 	contenedorPrincipal.slideUp('slow',function(){
 		contenedorPrincipal.load(href+' #contenidoPrincipal', function(){
@@ -138,9 +143,9 @@ function cargarImagenesycompletar(){
 		$.each(imagenes,function(){
 			$(this).load(function(){
 				imagenesCargadas=imagenesCargadas+1;
-				console.log(imagenesCargadas+ ' de '+	cantidadDeImagenes );
+			//	console.log(imagenesCargadas+ ' de '+	cantidadDeImagenes );
 				if(imagenesCargadas==cantidadDeImagenes){
-					console.log('imagenes Cargadas');
+				//	console.log('imagenes Cargadas');
 					contenedorPrincipal=$('#contenidoPrincipal');
 					contenedorPrincipal.slideDown('slow',function(){
 						esconderLoading();
