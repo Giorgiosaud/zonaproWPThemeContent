@@ -2,7 +2,7 @@
 /**
  * La Cabecera de nuestro tema
  *
- * Displays all of the <head <?php do_action( 'add_head_attributes' ); ?>> section and everything up till <div id="main">
+ * Displays all of the <head> section and everything up till <div id="main">
  *
  * @package WordPress
  * @subpackage Twenty_Fourteen
@@ -19,7 +19,7 @@
 <!--[if !(IE 7) | !(IE 8) ]><!-->
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
-<head <?php do_action( 'add_head_attributes' ); ?>>
+<head>
 	<?php wp_head(); ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta property="fb:admins" content="731366668" />
